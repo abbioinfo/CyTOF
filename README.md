@@ -12,23 +12,23 @@ The algorithm begins with the following multi-step procedure to calculate local 
   2. Landmarks: In the training set, the cell-cell closeness per cell type are identified by decomposing the high-dimensional data points into two Principal Components (PCs) followed by estimating the kernel densities of each cell. Using this, the total number of landmark cells per cell type is determined as the set of non-similar cells from the training set that are able to predict the expected cells in the test set using nearest neighborhood identification.
 
 Quadratic Discriminant Analysis: 
-
-    Using the training data set, the non-linear boundaries for cell type separation are modeled by performing discriminant analysis, QDA, followed by model evaluation on test data set.
+  
+  Using the training data set, the non-linear boundaries for cell type separation are modeled by performing discriminant analysis, QDA, followed by model evaluation on test data set.
 
   Cell type prediction:
-
-    Index Blocking: Each sample of independent live cells dataset is split into a defined number of blocks of equal numbers of randomly selected unique cell.
+  
+  Index Blocking: Each sample of independent live cells dataset is split into a defined number of blocks of equal numbers of randomly selected unique cell.
 
   Bootstrapping: 
 
-    In each epoch, randomly selected blocks, one from each sample, are shuffled to create a unique sub-sample that undergoes cell type identification steps. Next, the approximated nearest neighbor cells for each landmark are determined. The approximated landmark neighbors are further clustered by GMM. The cells that cluster together with landmarks are shortlisted for QDA classification, whereby its posterior probability for a given cell type is used to compute its final score across all epochs.
+  In each epoch, randomly selected blocks, one from each sample, are shuffled to create a unique sub-sample that undergoes cell type identification steps. Next, the approximated nearest neighbor cells for each landmark are determined. The approximated landmark neighbors are further clustered by GMM. The cells that cluster together with landmarks are shortlisted for QDA classification, whereby its posterior probability for a given cell type is used to compute its final score across all epochs.
 
 Scoring: 
 
-    The final score for each cell, one for each cell type, is computed using the following equation:
-    where, p1 and p2 are the GMM and QDA posterior probabilities respectively, in each iteration i of total epochs e. 𝛾 is the error rate (QDA) for cell type ct. The credibility of the prediction for each cell is determined by evaluating the variance in the cell types found to be associated with it across all epochs.
+  The final score for each cell, one for each cell type, is computed using the following equation:
+  where, p1 and p2 are the GMM and QDA posterior probabilities respectively, in each iteration i of total epochs e. 𝛾 is the error rate (QDA) for cell type ct. The credibility of the prediction for each cell is determined by evaluating the variance in the cell types found to be associated with it across all epochs.
 
-   Cluster stability:
+  Cluster stability:
    
-      The cluster stability and the core cells associated with stable clusters are predicted by enumerating the variations associated with its cells. For downstream biological analysis only stable cells enriched within a given cell type may be used for reliable estimation of the differential behavior in their functional markers.
+  The cluster stability and the core cells associated with stable clusters are predicted by enumerating the variations associated with its cells. For downstream biological analysis only stable cells enriched within a given cell type may be used for reliable estimation of the differential behavior in their functional markers.
 
