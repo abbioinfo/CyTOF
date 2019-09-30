@@ -1,4 +1,4 @@
-# CyTOF-annotator (under-development)
+# CyTOF-annotator (under development)
 
 Abstract:
 
